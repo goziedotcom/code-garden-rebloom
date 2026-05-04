@@ -1,26 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Layout } from "@/components/Layout";
+import { Hero } from "@/components/Hero";
+import { CoursesShowcase } from "@/components/CoursesShowcase";
+import { WhyUs } from "@/components/WhyUs";
+import { CTASection } from "@/components/CTASection";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Code Garden — Coding & Programming Tutorship for Kids & Teens" },
+      {
+        name: "description",
+        content:
+          "Code Garden teaches game development, Python, web, mobile and UI/UX design to young learners through fun, project-based courses.",
+      },
+      { property: "og:title", content: "Code Garden — Where Young Coders Grow" },
+      { property: "og:description", content: "Hands-on coding courses for kids and teens." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <Layout>
+      <Hero />
+      <CoursesShowcase limit={6} />
+      <WhyUs />
+      <CTASection />
+    </Layout>
+  );
 }
