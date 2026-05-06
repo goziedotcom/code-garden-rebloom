@@ -29,12 +29,12 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto max-w-7xl px-6 h-20 md:h-24 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img
             src={scrolled ? site.logo.light : site.logo.primary}
             alt={`${site.name} logo`}
-            className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform"
+            className="h-16 md:h-20 w-auto group-hover:scale-105 transition-transform"
           />
           <span className="sr-only">{site.name}</span>
         </Link>
