@@ -15,7 +15,7 @@ export function WhyUs() {
         <div className="text-center max-w-2xl mx-auto">
           <span className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">Why Codegarden</span>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold">
-            We grow coders, at every age
+            We grow coders,<br />at every age
           </h2>
           <p className="mt-4 text-muted-foreground">
             From curious kids to career-switching adults, our mentors meet learners where they are and take them where they want to go.

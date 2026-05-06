@@ -50,7 +50,7 @@ export function Hero() {
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-7 py-3.5 font-semibold hover:bg-white/10 transition-colors"
             >
-              Book a Free Trial
+              Book a Demo Class
             </Link>
           </div>
 
