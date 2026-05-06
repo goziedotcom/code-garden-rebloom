@@ -34,7 +34,7 @@ export function Header() {
           <img
             src={site.logo.light}
             alt={`${site.name} logo`}
-            className="h-9 w-auto rounded-md group-hover:scale-105 transition-transform"
+            className="h-8 w-auto group-hover:scale-105 transition-transform"
           />
           <span className="sr-only">{site.name}</span>
         </Link>

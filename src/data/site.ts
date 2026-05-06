@@ -1,5 +1,5 @@
-import logoBlue from "@/assets/logo-blue-bg.jpg";
-import logoLight from "@/assets/logo-white-bg.jpg";
+import logoBlueText from "@/assets/logo-blue.png";
+import logoWhiteText from "@/assets/logo-white.png";
 
 export const site = {
   name: "Codegarden",
@@ -17,8 +17,8 @@ export const site = {
   description:
     "Codegarden offers hands-on coding and programming tutorship for kids, teens and adults — from Scratch games to professional web and mobile apps.",
   logo: {
-    primary: logoBlue, // blue background, white logo
-    light: logoLight, // white background, blue logo
+    primary: logoWhiteText, // white text — for dark backgrounds (footer, navy)
+    light: logoBlueText, // blue text — for light backgrounds (header)
   },
   contact: {
     email: "info.codegarden@gmail.com",
