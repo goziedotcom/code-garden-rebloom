@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={site.logo.primary} alt={`${site.name} logo`} className="h-10 w-auto rounded-md" />
+            <img src={site.logo.primary} alt={`${site.name} logo`} className="h-9 w-auto" />
           </div>
           <p className="mt-4 max-w-md text-sm text-white/70">{site.description}</p>
           <div className="mt-6 flex gap-3">
