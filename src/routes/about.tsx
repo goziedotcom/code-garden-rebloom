@@ -42,6 +42,32 @@ function AboutPage() {
         ))}
       </section>
 
+      <section className="container mx-auto max-w-6xl px-6 pb-8">
+        <div className="relative rounded-3xl bg-hero-gradient text-white p-10 md:p-14 overflow-hidden shadow-elevated">
+          <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gold/30 blur-3xl" />
+          <div className="relative grid md:grid-cols-[auto,1fr] gap-10 items-center">
+            <div className="relative mx-auto md:mx-0">
+              <div className="absolute -inset-3 bg-gold/30 blur-2xl rounded-full" />
+              <img
+                src={ceoPhoto}
+                alt="Mr. Wilfred W., CEO of Code Garden Institute"
+                className="relative h-48 w-48 md:h-56 md:w-56 rounded-full object-cover border-4 border-gold/60 shadow-elevated"
+              />
+            </div>
+            <div>
+              <Quote className="h-8 w-8 text-gold" />
+              <blockquote className="mt-4 font-display text-xl md:text-2xl leading-relaxed text-white/90">
+                At Code Garden, we nurture young minds by seamlessly blending offline and online coding classes. Our innovative approach ensures kids embark on a coding journey that transcends digital boundaries, fostering creativity and skills that last a lifetime. Join us in cultivating the next generation of tech enthusiasts!
+              </blockquote>
+              <div className="mt-6">
+                <div className="font-display text-lg font-bold text-gold">Mr. Wilfred W.</div>
+                <div className="text-sm text-white/70 uppercase tracking-wider">CEO, Code Garden Institute</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-secondary/60 py-20">
         <div className="container mx-auto max-w-7xl px-6 grid sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {site.stats.map((s) => (
