@@ -29,7 +29,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto max-w-7xl px-6 h-20 md:h-24 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img
             src={scrolled ? site.logo.light : site.logo.primary}
