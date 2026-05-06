@@ -13,7 +13,7 @@ export function CoursesShowcase({ limit }: { limit?: number }) {
             Programs designed to <span className="text-deep-blue">spark curiosity</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            From visual block coding to professional web development, every course is built for real outcomes — and a lot of fun along the way.
+            From visual block coding for kids to professional web development for adults, every course is built for real outcomes — and a lot of fun along the way.
           </p>
         </div>
         {limit && (

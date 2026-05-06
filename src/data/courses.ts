@@ -50,7 +50,7 @@ export const courses: Course[] = [
     slug: "python",
     title: "Python Programming",
     category: "Programming",
-    ageRange: "Ages 11+",
+    ageRange: "Ages 11+ & Adults",
     duration: "12 weeks",
     level: "Beginner",
     blurb:
@@ -67,7 +67,7 @@ export const courses: Course[] = [
     slug: "mobile-app-dev",
     title: "Mobile App Development",
     category: "App Development",
-    ageRange: "Ages 13+",
+    ageRange: "Ages 13+ & Adults",
     duration: "12 weeks",
     level: "Intermediate",
     blurb:
@@ -84,7 +84,7 @@ export const courses: Course[] = [
     slug: "ui-ux-design",
     title: "UI/UX Design",
     category: "Design",
-    ageRange: "Ages 12+",
+    ageRange: "Ages 12+ & Adults",
     duration: "8 weeks",
     level: "Beginner",
     blurb:
@@ -101,7 +101,7 @@ export const courses: Course[] = [
     slug: "web-development",
     title: "Website Development",
     category: "Web Development",
-    ageRange: "Ages 12+",
+    ageRange: "Ages 12+ & Adults",
     duration: "12 weeks",
     level: "Intermediate",
     blurb:

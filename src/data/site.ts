@@ -1,6 +1,9 @@
+import logoBlue from "@/assets/logo-blue-bg.jpg";
+import logoLight from "@/assets/logo-white-bg.jpg";
+
 export const site = {
-  name: "Code Garden",
-  slogan: "Where Young Coders Grow",
+  name: "Codegarden",
+  slogan: "Where Coders Grow",
   tagline: "Nurturing the next generation of",
   // Words for the hero typewriter cursor effect
   rotatingWords: [
@@ -12,11 +15,15 @@ export const site = {
     "Roblox Creators",
   ],
   description:
-    "Code Garden offers hands-on coding and programming tutorship for kids and teens — from Scratch games to professional web and mobile apps.",
+    "Codegarden offers hands-on coding and programming tutorship for kids, teens and adults — from Scratch games to professional web and mobile apps.",
+  logo: {
+    primary: logoBlue, // blue background, white logo
+    light: logoLight, // white background, blue logo
+  },
   contact: {
-    email: "hello@officialcodegarden.com",
-    phone: "+1 (555) 123-4567",
-    address: "Online & In-person classes worldwide",
+    email: "info.codegarden@gmail.com",
+    phone: "+234 810 502 5758",
+    address: "Rivers State ICT Center, Air Force Road, Port Harcourt, Nigeria",
   },
   social: {
     instagram: "https://instagram.com/officialcodegarden",
@@ -26,7 +33,10 @@ export const site = {
   stats: [
     { value: "500+", label: "Students Taught" },
     { value: "12+", label: "Courses Offered" },
-    { value: "98%", label: "Parent Satisfaction" },
+    { value: "98%", label: "Learner Satisfaction" },
     { value: "6+", label: "Years of Experience" },
   ],
+  // Stock image for now — student learning visual
+  classroomImage:
+    "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1400&q=80",
 };

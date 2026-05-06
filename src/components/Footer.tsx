@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Code2, Instagram, Twitter, Youtube, Mail } from "lucide-react";
+import { Instagram, Twitter, Youtube, Mail } from "lucide-react";
 import { site } from "@/data/site";
 
 export function Footer() {
@@ -7,11 +7,8 @@ export function Footer() {
     <footer className="bg-navy text-primary-foreground/90 mt-24">
       <div className="container mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2">
-            <span className="grid place-items-center h-9 w-9 rounded-lg bg-gold-gradient text-gold-foreground">
-              <Code2 className="h-5 w-5" />
-            </span>
-            <span className="font-display font-bold text-lg text-white">{site.name}</span>
+          <div className="flex items-center gap-3">
+            <img src={site.logo.primary} alt={`${site.name} logo`} className="h-10 w-auto rounded-md" />
           </div>
           <p className="mt-4 max-w-md text-sm text-white/70">{site.description}</p>
           <div className="mt-6 flex gap-3">
