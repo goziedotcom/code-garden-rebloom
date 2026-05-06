@@ -17,7 +17,7 @@ export function CTASection() {
             to="/contact"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-gradient text-gold-foreground px-7 py-3.5 font-semibold hover:shadow-gold-glow transition-shadow"
           >
-            Book a Free Trial <ArrowRight className="h-4 w-4" />
+            Book a Demo Class <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

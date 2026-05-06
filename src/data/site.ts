@@ -32,9 +32,9 @@ export const site = {
   },
   stats: [
     { value: "500+", label: "Students Taught" },
-    { value: "12+", label: "Courses Offered" },
-    { value: "98%", label: "Learner Satisfaction" },
-    { value: "6+", label: "Years of Experience" },
+    { value: "6+", label: "Courses Offered" },
+    { value: "95%", label: "Learner Satisfaction" },
+    { value: "3+", label: "Years of Experience" },
   ],
   // Stock image for now — student learning visual
   classroomImage:
