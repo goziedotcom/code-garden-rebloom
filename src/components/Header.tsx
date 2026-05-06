@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site } from "@/data/site";
 
 const nav = [
@@ -31,12 +31,12 @@ export function Header() {
     >
       <div className="container mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid place-items-center h-9 w-9 rounded-lg bg-gold-gradient text-gold-foreground shadow-gold-glow group-hover:scale-105 transition-transform">
-            <Code2 className="h-5 w-5" />
-          </span>
-          <span className="font-display font-bold text-lg tracking-tight">
-            {site.name}
-          </span>
+          <img
+            src={site.logo.light}
+            alt={`${site.name} logo`}
+            className="h-9 w-auto rounded-md group-hover:scale-105 transition-transform"
+          />
+          <span className="sr-only">{site.name}</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
