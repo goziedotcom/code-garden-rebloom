@@ -32,9 +32,9 @@ export function Header() {
       <div className="container mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img
-            src={site.logo.light}
+            src={scrolled ? site.logo.light : site.logo.primary}
             alt={`${site.name} logo`}
-            className="h-8 w-auto group-hover:scale-105 transition-transform"
+            className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform"
           />
           <span className="sr-only">{site.name}</span>
         </Link>
@@ -55,7 +55,7 @@ export function Header() {
             to="/contact"
             className="ml-3 inline-flex items-center rounded-full bg-gold-gradient text-gold-foreground px-5 py-2 text-sm font-semibold hover:shadow-gold-glow transition-shadow"
           >
-            Enroll Now
+            Enroll Today
           </Link>
         </nav>
 
@@ -88,7 +88,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 inline-flex justify-center rounded-full bg-gold-gradient text-gold-foreground px-5 py-2 text-sm font-semibold"
             >
-              Enroll Now
+              Enroll Today
             </Link>
           </div>
         </div>
