@@ -24,7 +24,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Get in Touch"
         title={<>Let's start your <span className="text-gold">coding journey</span></>}
-        subtitle="Questions about a course, age requirements, or scheduling? We'd love to hear from you."
+        subtitle="Questions about a course, age requirements, or scheduling? Whether you're enrolling a child, teen, or yourself — we'd love to hear from you."
       />
 
       <section className="container mx-auto max-w-7xl px-6 py-20 grid lg:grid-cols-5 gap-10">
@@ -60,16 +60,16 @@ function ContactPage() {
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Parent name" name="name" />
+              <Field label="Full name" name="name" />
               <Field label="Email" name="email" type="email" />
-              <Field label="Student age" name="age" />
+              <Field label="Learner age" name="age" />
               <Field label="Course of interest" name="course" />
               <div className="sm:col-span-2">
                 <label className="text-sm font-medium text-foreground">Message</label>
                 <textarea
                   rows={5}
                   className="mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
-                  placeholder="Tell us a bit about your child's interests..."
+                  placeholder="Tell us a bit about your goals or interests..."
                 />
               </div>
               <button
