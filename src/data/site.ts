@@ -38,6 +38,5 @@ export const site = {
     { value: "3+", label: "Years of Experience" },
   ],
   // Stock image for now — student learning visual
-  classroomImage:
-    "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1400&q=80",
+  classroomImage: classroomImg,
 };
