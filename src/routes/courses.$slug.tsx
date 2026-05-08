@@ -89,7 +89,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">What you'll learn</h2>
               <ul className="mt-5 grid sm:grid-cols-2 gap-3">
-                {detail.outcomes.map((o) => (
+                {detail.outcomes.map((o: string) => (
                   <li key={o} className="flex items-start gap-3 text-sm">
                     <span className="mt-0.5 grid place-items-center h-5 w-5 rounded-full bg-gold-gradient text-gold-foreground shrink-0">
                       <Check className="h-3 w-3" />
@@ -105,7 +105,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">What you'll build</h2>
               <ul className="mt-5 space-y-2">
-                {detail.whatYoullBuild.map((p) => (
+                {detail.whatYoullBuild.map((p: string) => (
                   <li key={p} className="flex items-start gap-3 text-sm text-foreground/90">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
                     {p}
@@ -119,7 +119,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">Curriculum</h2>
               <div className="mt-5 space-y-4">
-                {detail.modules.map((m, i) => (
+                {detail.modules.map((m: { title: string; lessons: string[] }, i: number) => (
                   <div key={m.title} className="rounded-2xl bg-card border border-border p-6">
                     <div className="flex items-center gap-3">
                       <span className="grid place-items-center h-8 w-8 rounded-full bg-secondary text-deep-blue text-sm font-semibold">
@@ -128,7 +128,7 @@ function CourseDetailPage() {
                       <h3 className="font-display text-lg font-bold">{m.title}</h3>
                     </div>
                     <ul className="mt-4 ml-11 space-y-1.5 text-sm text-muted-foreground">
-                      {m.lessons.map((l) => (
+                      {m.lessons.map((l: string) => (
                         <li key={l} className="list-disc list-outside">{l}</li>
                       ))}
                     </ul>
@@ -155,7 +155,7 @@ function CourseDetailPage() {
               <div className="pt-3 border-t border-border">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Prerequisites</div>
                 <ul className="text-sm space-y-1">
-                  {detail.prerequisites.map((p) => (
+                  {detail.prerequisites.map((p: string) => (
                     <li key={p} className="text-foreground/90">• {p}</li>
                   ))}
                 </ul>
