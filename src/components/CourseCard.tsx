@@ -1,9 +1,14 @@
 import { Clock, Users, ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import type { Course } from "@/data/courses";
 
 export function CourseCard({ course }: { course: Course }) {
   return (
-    <article className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-gold/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
+    <Link
+      to="/courses/$slug"
+      params={{ slug: course.slug }}
+      className="group relative block rounded-2xl overflow-hidden bg-card border border-border hover:border-gold/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+    >
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
           src={course.image}
