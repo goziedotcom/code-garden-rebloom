@@ -64,7 +64,7 @@ export function Header() {
         </nav>
 
         <button
-          className="md:hidden p-2 text-foreground"
+          className={`md:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
