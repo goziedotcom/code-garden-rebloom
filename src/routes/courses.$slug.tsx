@@ -8,7 +8,7 @@ export const Route = createFileRoute("/courses/$slug")({
   loader: ({ params }) => {
     const course = courses.find((c) => c.slug === params.slug);
     if (!course) throw notFound();
-    const detail = courseDetails[params.slug];
+    const detail: CourseDetail | undefined = courseDetails[params.slug];
     return { course, detail };
   },
   head: ({ loaderData }) => {
