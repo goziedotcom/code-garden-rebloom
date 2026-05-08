@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { courses } from "@/data/courses";
-import { courseDetails } from "@/data/course-details";
+import { courseDetails, type CourseDetail } from "@/data/course-details";
 import { Clock, Users, GraduationCap, Wrench, Calendar, MapPin, ArrowLeft, Check } from "lucide-react";
 
 export const Route = createFileRoute("/courses/$slug")({
