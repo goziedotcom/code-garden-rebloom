@@ -40,6 +40,6 @@ export function CourseCard({ course }: { course: Course }) {
           </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
