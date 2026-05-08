@@ -44,7 +44,11 @@ export function Header() {
             <Link
               key={item.to}
               to={item.to}
-              className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+              className={`px-4 py-2 text-sm font-medium transition-colors ${
+                scrolled
+                  ? "text-foreground/80 hover:text-foreground"
+                  : "text-white/90 hover:text-white"
+              }`}
               activeProps={{ className: "text-gold" }}
               activeOptions={{ exact: item.to === "/" }}
             >
@@ -60,7 +64,7 @@ export function Header() {
         </nav>
 
         <button
-          className="md:hidden p-2 text-foreground"
+          className={`md:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
