@@ -1,3 +1,5 @@
+export type CourseModule = { title: string; lessons: string[] };
+
 export type Course = {
   slug: string;
   title: string;
@@ -9,6 +11,14 @@ export type Course = {
   highlights: string[];
   image: string;
   accent?: string;
+  overview?: string;
+  outcomes?: string[];
+  whatYoullBuild?: string[];
+  prerequisites?: string[];
+  tools?: string[];
+  schedule?: string;
+  format?: string;
+  modules?: CourseModule[];
 };
 
 export const courses: Course[] = [
