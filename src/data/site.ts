@@ -1,5 +1,6 @@
 import logoBlueText from "@/assets/logo-blue.png";
 import logoWhiteText from "@/assets/logo-white.png";
+import classroomImg from "@/assets/students-classroom.jpg";
 
 export const site = {
   name: "Codegarden",
