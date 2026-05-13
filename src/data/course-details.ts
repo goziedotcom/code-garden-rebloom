@@ -31,7 +31,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["Basic reading and computer skills", "No prior coding experience required"],
     tools: ["Scratch 3.0", "A laptop with internet access"],
-    schedule: "2 sessions per week · 1 hour each",
+    schedule: "6-month program · 2 sessions per week · 1 hour each",
     format: "Hybrid — in-class at our Port Harcourt center or live online",
     modules: [
       { title: "Welcome to Scratch", lessons: ["Tour of the editor", "Sprites & stages", "Your first animation"] },
@@ -56,7 +56,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["Comfortable using a computer", "A Roblox account (free)"],
     tools: ["Roblox Studio", "Lua"],
-    schedule: "2 sessions per week · 1.5 hours each",
+    schedule: "6–12 month program · 2 sessions per week · 1.5 hours each",
     format: "Hybrid — in-class or live online",
     modules: [
       { title: "Studio Basics", lessons: ["Interface tour", "Parts & terrain", "Lighting & atmosphere"] },
@@ -82,7 +82,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["Basic computer literacy", "Math fundamentals helpful but not required"],
     tools: ["Python 3", "VS Code", "Git basics"],
-    schedule: "2 sessions per week · 1.5 hours each",
+    schedule: "6–12 month program · 2 sessions per week · 1.5 hours each",
     format: "Hybrid — in-class or live online",
     modules: [
       { title: "Python Foundations", lessons: ["Syntax & variables", "Data types", "Control flow"] },
@@ -107,7 +107,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["Basic JavaScript or Python helpful", "Comfort with computers"],
     tools: ["React Native / Expo", "Figma", "Git & GitHub"],
-    schedule: "2 sessions per week · 2 hours each",
+    schedule: "12-month program · 2 sessions per week · 2 hours each",
     format: "Hybrid — in-class or live online",
     modules: [
       { title: "Design Foundations", lessons: ["UX basics", "Wireframes", "Figma prototypes"] },
@@ -132,7 +132,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["No design experience needed", "An eye for detail"],
     tools: ["Figma", "FigJam"],
-    schedule: "2 sessions per week · 1.5 hours each",
+    schedule: "6–12 month program · 2 sessions per week · 1.5 hours each",
     format: "Hybrid — in-class or live online",
     modules: [
       { title: "Design Thinking", lessons: ["Empathize & define", "Ideate", "Prototype & test"] },
@@ -157,7 +157,7 @@ export const courseDetails: Record<string, CourseDetail> = {
     ],
     prerequisites: ["Basic computer skills", "Curiosity & patience"],
     tools: ["HTML, CSS, JavaScript", "React", "Git, GitHub & Vercel"],
-    schedule: "2 sessions per week · 2 hours each",
+    schedule: "12-month program · 2 sessions per week · 2 hours each",
     format: "Hybrid — in-class or live online",
     modules: [
       { title: "The Web Platform", lessons: ["HTML structure", "CSS layout", "Responsive design"] },
