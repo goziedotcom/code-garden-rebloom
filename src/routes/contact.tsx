@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { PageHero } from "@/components/PageHero";
 import { site } from "@/data/site";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
@@ -44,6 +44,16 @@ function ContactPage() {
               </div>
             </div>
           ))}
+
+          <a
+            href={`https://wa.me/${site.contact.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent("Hi Code Garden! I'd like to learn more about your courses.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 rounded-2xl bg-[#25D366] text-white p-5 font-semibold hover:bg-[#1ebe57] transition-colors shadow-elevated"
+          >
+            <MessageCircle className="h-5 w-5" />
+            Chat with us on WhatsApp
+          </a>
         </div>
 
         <form

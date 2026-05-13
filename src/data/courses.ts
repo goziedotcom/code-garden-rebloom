@@ -27,7 +27,7 @@ export const courses: Course[] = [
     title: "Game Development with Scratch",
     category: "Game Development",
     ageRange: "Ages 7–11",
-    duration: "8 weeks",
+    duration: "6 months",
     level: "Beginner",
     blurb:
       "An exciting first step into coding. Kids design characters, animations and full mini-games using Scratch's visual blocks.",
@@ -44,7 +44,7 @@ export const courses: Course[] = [
     title: "Game Development with Roblox",
     category: "Game Development",
     ageRange: "Ages 10–16",
-    duration: "10 weeks",
+    duration: "9 months",
     level: "Intermediate",
     blurb:
       "Build playable 3D worlds in Roblox Studio and learn Lua scripting to bring your games to life.",
@@ -61,7 +61,7 @@ export const courses: Course[] = [
     title: "Python Programming",
     category: "Programming",
     ageRange: "Ages 11+ & Adults",
-    duration: "12 weeks",
+    duration: "12 months",
     level: "Beginner",
     blurb:
       "Learn the world's most popular programming language. Build games, automate tasks and dive into AI basics.",
@@ -78,7 +78,7 @@ export const courses: Course[] = [
     title: "Mobile App Development",
     category: "App Development",
     ageRange: "Ages 13+ & Adults",
-    duration: "12 weeks",
+    duration: "12 months",
     level: "Intermediate",
     blurb:
       "Design and build real mobile apps for Android and iOS using modern frameworks.",
@@ -95,7 +95,7 @@ export const courses: Course[] = [
     title: "UI/UX Design",
     category: "Design",
     ageRange: "Ages 12+ & Adults",
-    duration: "8 weeks",
+    duration: "6 months",
     level: "Beginner",
     blurb:
       "Master the craft of creating beautiful, intuitive digital experiences using Figma.",
@@ -112,7 +112,7 @@ export const courses: Course[] = [
     title: "Website Development",
     category: "Web Development",
     ageRange: "Ages 12+ & Adults",
-    duration: "12 weeks",
+    duration: "12 months",
     level: "Intermediate",
     blurb:
       "From HTML & CSS to interactive sites with JavaScript and React — build the modern web.",
