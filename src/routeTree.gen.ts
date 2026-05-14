@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -20,6 +21,11 @@ import { Route as CoursesMobileAppDevRouteImport } from './routes/courses.mobile
 import { Route as CoursesGameDevScratchRouteImport } from './routes/courses.game-dev-scratch'
 import { Route as CoursesGameDevRobloxRouteImport } from './routes/courses.game-dev-roblox'
 
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -36,9 +42,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesIndexRoute = CoursesIndexRouteImport.update({
-  id: '/courses/',
-  path: '/courses/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => CoursesRoute,
 } as any)
 const CoursesWebDevelopmentRoute = CoursesWebDevelopmentRouteImport.update({
   id: '/web-development',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
   '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
   '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
@@ -100,6 +107,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/courses': typeof CoursesRouteWithChildren
   '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
   '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
   '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
@@ -114,6 +122,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/courses'
     | '/courses/game-dev-roblox'
     | '/courses/game-dev-scratch'
     | '/courses/mobile-app-dev'
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/courses'
     | '/courses/game-dev-roblox'
     | '/courses/game-dev-scratch'
     | '/courses/mobile-app-dev'
@@ -151,11 +161,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  CoursesIndexRoute: typeof CoursesIndexRoute
+  CoursesRoute: typeof CoursesRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -179,10 +196,10 @@ declare module '@tanstack/react-router' {
     }
     '/courses/': {
       id: '/courses/'
-      path: '/courses'
+      path: '/'
       fullPath: '/courses/'
       preLoaderRoute: typeof CoursesIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof CoursesRoute
     }
     '/courses/web-development': {
       id: '/courses/web-development'
@@ -229,11 +246,34 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CoursesRouteChildren {
+  CoursesGameDevRobloxRoute: typeof CoursesGameDevRobloxRoute
+  CoursesGameDevScratchRoute: typeof CoursesGameDevScratchRoute
+  CoursesMobileAppDevRoute: typeof CoursesMobileAppDevRoute
+  CoursesPythonRoute: typeof CoursesPythonRoute
+  CoursesUiUxDesignRoute: typeof CoursesUiUxDesignRoute
+  CoursesWebDevelopmentRoute: typeof CoursesWebDevelopmentRoute
+  CoursesIndexRoute: typeof CoursesIndexRoute
+}
+
+const CoursesRouteChildren: CoursesRouteChildren = {
+  CoursesGameDevRobloxRoute: CoursesGameDevRobloxRoute,
+  CoursesGameDevScratchRoute: CoursesGameDevScratchRoute,
+  CoursesMobileAppDevRoute: CoursesMobileAppDevRoute,
+  CoursesPythonRoute: CoursesPythonRoute,
+  CoursesUiUxDesignRoute: CoursesUiUxDesignRoute,
+  CoursesWebDevelopmentRoute: CoursesWebDevelopmentRoute,
+  CoursesIndexRoute: CoursesIndexRoute,
+}
+
+const CoursesRouteWithChildren =
+  CoursesRoute._addFileChildren(CoursesRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  CoursesIndexRoute: CoursesIndexRoute,
+  CoursesRoute: CoursesRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
