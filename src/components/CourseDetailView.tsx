@@ -1,45 +1,14 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
-import { courses } from "@/data/courses";
-import { courseDetails, type CourseDetail } from "@/data/course-details";
+import type { Course } from "@/data/courses";
+import { courseDetails } from "@/data/course-details";
 import { Clock, Users, GraduationCap, Wrench, Calendar, MapPin, ArrowLeft, Check } from "lucide-react";
 
-export const Route = createFileRoute("/courses/$slug")({
-  loader: ({ params }) => {
-    const course = courses.find((c) => c.slug === params.slug);
-    if (!course) throw notFound();
-    const detail: CourseDetail | undefined = courseDetails[params.slug];
-    return { course, detail };
-  },
-  head: ({ loaderData }) => {
-    const c = loaderData?.course;
-    return {
-      meta: [
-        { title: c ? `${c.title} — Code Garden` : "Course — Code Garden" },
-        { name: "description", content: c?.blurb ?? "" },
-        { property: "og:title", content: c?.title ?? "Course" },
-        { property: "og:description", content: c?.blurb ?? "" },
-        ...(c?.image ? [{ property: "og:image", content: c.image }] : []),
-      ],
-    };
-  },
-  component: CourseDetailPage,
-  notFoundComponent: () => (
-    <Layout>
-      <div className="container mx-auto max-w-3xl px-6 py-32 text-center">
-        <h1 className="font-display text-4xl font-bold">Course not found</h1>
-        <Link to="/courses" className="mt-6 inline-block text-deep-blue hover:text-gold">← Back to all courses</Link>
-      </div>
-    </Layout>
-  ),
-});
-
-function CourseDetailPage() {
-  const { course, detail } = Route.useLoaderData();
+export function CourseDetailView({ course }: { course: Course }) {
+  const detail = courseDetails[course.slug];
 
   return (
     <Layout>
-      {/* Hero */}
       <section className="relative bg-hero-gradient text-white pt-36 pb-20 overflow-hidden">
         <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/25 blur-3xl animate-float" />
         <div className="container mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
@@ -75,7 +44,6 @@ function CourseDetailPage() {
         </div>
       </section>
 
-      {/* Body */}
       <section className="container mx-auto max-w-7xl px-6 py-20 grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-12">
           {detail?.overview && (
@@ -89,7 +57,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">What you'll learn</h2>
               <ul className="mt-5 grid sm:grid-cols-2 gap-3">
-                {detail.outcomes.map((o: string) => (
+                {detail.outcomes.map((o) => (
                   <li key={o} className="flex items-start gap-3 text-sm">
                     <span className="mt-0.5 grid place-items-center h-5 w-5 rounded-full bg-gold-gradient text-gold-foreground shrink-0">
                       <Check className="h-3 w-3" />
@@ -105,7 +73,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">What you'll build</h2>
               <ul className="mt-5 space-y-2">
-                {detail.whatYoullBuild.map((p: string) => (
+                {detail.whatYoullBuild.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-sm text-foreground/90">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
                     {p}
@@ -119,7 +87,7 @@ function CourseDetailPage() {
             <div>
               <h2 className="font-display text-3xl font-bold">Curriculum</h2>
               <div className="mt-5 space-y-4">
-                {detail.modules.map((m: { title: string; lessons: string[] }, i: number) => (
+                {detail.modules.map((m, i) => (
                   <div key={m.title} className="rounded-2xl bg-card border border-border p-6">
                     <div className="flex items-center gap-3">
                       <span className="grid place-items-center h-8 w-8 rounded-full bg-secondary text-deep-blue text-sm font-semibold">
@@ -128,7 +96,7 @@ function CourseDetailPage() {
                       <h3 className="font-display text-lg font-bold">{m.title}</h3>
                     </div>
                     <ul className="mt-4 ml-11 space-y-1.5 text-sm text-muted-foreground">
-                      {m.lessons.map((l: string) => (
+                      {m.lessons.map((l) => (
                         <li key={l} className="list-disc list-outside">{l}</li>
                       ))}
                     </ul>
@@ -139,7 +107,6 @@ function CourseDetailPage() {
           )}
         </div>
 
-        {/* Sidebar */}
         <aside className="lg:sticky lg:top-28 self-start">
           <div className="rounded-2xl bg-card border border-border p-6 shadow-elevated space-y-5">
             <h3 className="font-display text-xl font-bold">Course details</h3>
@@ -155,7 +122,7 @@ function CourseDetailPage() {
               <div className="pt-3 border-t border-border">
                 <div className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Prerequisites</div>
                 <ul className="text-sm space-y-1">
-                  {detail.prerequisites.map((p: string) => (
+                  {detail.prerequisites.map((p) => (
                     <li key={p} className="text-foreground/90">• {p}</li>
                   ))}
                 </ul>
