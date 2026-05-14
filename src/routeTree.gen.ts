@@ -13,7 +13,12 @@ import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
+import { Route as CoursesWebDevelopmentRouteImport } from './routes/courses.web-development'
+import { Route as CoursesUiUxDesignRouteImport } from './routes/courses.ui-ux-design'
+import { Route as CoursesPythonRouteImport } from './routes/courses.python'
+import { Route as CoursesMobileAppDevRouteImport } from './routes/courses.mobile-app-dev'
+import { Route as CoursesGameDevScratchRouteImport } from './routes/courses.game-dev-scratch'
+import { Route as CoursesGameDevRobloxRouteImport } from './routes/courses.game-dev-roblox'
 
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
@@ -35,9 +40,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CoursesSlugRoute = CoursesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
+const CoursesWebDevelopmentRoute = CoursesWebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesUiUxDesignRoute = CoursesUiUxDesignRouteImport.update({
+  id: '/ui-ux-design',
+  path: '/ui-ux-design',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesPythonRoute = CoursesPythonRouteImport.update({
+  id: '/python',
+  path: '/python',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesMobileAppDevRoute = CoursesMobileAppDevRouteImport.update({
+  id: '/mobile-app-dev',
+  path: '/mobile-app-dev',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesGameDevScratchRoute = CoursesGameDevScratchRouteImport.update({
+  id: '/game-dev-scratch',
+  path: '/game-dev-scratch',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const CoursesGameDevRobloxRoute = CoursesGameDevRobloxRouteImport.update({
+  id: '/game-dev-roblox',
+  path: '/game-dev-roblox',
   getParentRoute: () => CoursesRoute,
 } as any)
 
@@ -46,14 +76,24 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRouteWithChildren
-  '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
+  '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
+  '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
+  '/courses/python': typeof CoursesPythonRoute
+  '/courses/ui-ux-design': typeof CoursesUiUxDesignRoute
+  '/courses/web-development': typeof CoursesWebDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRouteWithChildren
-  '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
+  '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
+  '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
+  '/courses/python': typeof CoursesPythonRoute
+  '/courses/ui-ux-design': typeof CoursesUiUxDesignRoute
+  '/courses/web-development': typeof CoursesWebDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,14 +101,50 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRouteWithChildren
-  '/courses/$slug': typeof CoursesSlugRoute
+  '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
+  '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
+  '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
+  '/courses/python': typeof CoursesPythonRoute
+  '/courses/ui-ux-design': typeof CoursesUiUxDesignRoute
+  '/courses/web-development': typeof CoursesWebDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/courses' | '/courses/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/courses'
+    | '/courses/game-dev-roblox'
+    | '/courses/game-dev-scratch'
+    | '/courses/mobile-app-dev'
+    | '/courses/python'
+    | '/courses/ui-ux-design'
+    | '/courses/web-development'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/courses' | '/courses/$slug'
-  id: '__root__' | '/' | '/about' | '/contact' | '/courses' | '/courses/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/courses'
+    | '/courses/game-dev-roblox'
+    | '/courses/game-dev-scratch'
+    | '/courses/mobile-app-dev'
+    | '/courses/python'
+    | '/courses/ui-ux-design'
+    | '/courses/web-development'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/courses'
+    | '/courses/game-dev-roblox'
+    | '/courses/game-dev-scratch'
+    | '/courses/mobile-app-dev'
+    | '/courses/python'
+    | '/courses/ui-ux-design'
+    | '/courses/web-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -108,22 +184,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/courses/$slug': {
-      id: '/courses/$slug'
-      path: '/$slug'
-      fullPath: '/courses/$slug'
-      preLoaderRoute: typeof CoursesSlugRouteImport
+    '/courses/web-development': {
+      id: '/courses/web-development'
+      path: '/web-development'
+      fullPath: '/courses/web-development'
+      preLoaderRoute: typeof CoursesWebDevelopmentRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/ui-ux-design': {
+      id: '/courses/ui-ux-design'
+      path: '/ui-ux-design'
+      fullPath: '/courses/ui-ux-design'
+      preLoaderRoute: typeof CoursesUiUxDesignRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/python': {
+      id: '/courses/python'
+      path: '/python'
+      fullPath: '/courses/python'
+      preLoaderRoute: typeof CoursesPythonRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/mobile-app-dev': {
+      id: '/courses/mobile-app-dev'
+      path: '/mobile-app-dev'
+      fullPath: '/courses/mobile-app-dev'
+      preLoaderRoute: typeof CoursesMobileAppDevRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/game-dev-scratch': {
+      id: '/courses/game-dev-scratch'
+      path: '/game-dev-scratch'
+      fullPath: '/courses/game-dev-scratch'
+      preLoaderRoute: typeof CoursesGameDevScratchRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/courses/game-dev-roblox': {
+      id: '/courses/game-dev-roblox'
+      path: '/game-dev-roblox'
+      fullPath: '/courses/game-dev-roblox'
+      preLoaderRoute: typeof CoursesGameDevRobloxRouteImport
       parentRoute: typeof CoursesRoute
     }
   }
 }
 
 interface CoursesRouteChildren {
-  CoursesSlugRoute: typeof CoursesSlugRoute
+  CoursesGameDevRobloxRoute: typeof CoursesGameDevRobloxRoute
+  CoursesGameDevScratchRoute: typeof CoursesGameDevScratchRoute
+  CoursesMobileAppDevRoute: typeof CoursesMobileAppDevRoute
+  CoursesPythonRoute: typeof CoursesPythonRoute
+  CoursesUiUxDesignRoute: typeof CoursesUiUxDesignRoute
+  CoursesWebDevelopmentRoute: typeof CoursesWebDevelopmentRoute
 }
 
 const CoursesRouteChildren: CoursesRouteChildren = {
-  CoursesSlugRoute: CoursesSlugRoute,
+  CoursesGameDevRobloxRoute: CoursesGameDevRobloxRoute,
+  CoursesGameDevScratchRoute: CoursesGameDevScratchRoute,
+  CoursesMobileAppDevRoute: CoursesMobileAppDevRoute,
+  CoursesPythonRoute: CoursesPythonRoute,
+  CoursesUiUxDesignRoute: CoursesUiUxDesignRoute,
+  CoursesWebDevelopmentRoute: CoursesWebDevelopmentRoute,
 }
 
 const CoursesRouteWithChildren =
