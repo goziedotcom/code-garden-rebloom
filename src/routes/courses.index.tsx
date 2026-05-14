@@ -5,7 +5,7 @@ import { CourseCard } from "@/components/CourseCard";
 import { courses } from "@/data/courses";
 import inSessionImg from "@/assets/in-session-class.jpg";
 
-export const Route = createFileRoute("/courses")({
+export const Route = createFileRoute("/courses/")({
   head: () => ({
     meta: [
       { title: "Courses — Code Garden" },
