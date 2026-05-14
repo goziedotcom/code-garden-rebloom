@@ -5,8 +5,7 @@ import type { Course } from "@/data/courses";
 export function CourseCard({ course }: { course: Course }) {
   return (
     <Link
-      to="/courses/$slug"
-      params={{ slug: course.slug }}
+      to={`/courses/${course.slug}` as "/courses"}
       className="group relative block rounded-2xl overflow-hidden bg-card border border-border hover:border-gold/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
