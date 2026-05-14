@@ -2,10 +2,19 @@ import { Clock, Users, ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { Course } from "@/data/courses";
 
+const courseLinks = {
+  "game-dev-scratch": "/courses/game-dev-scratch",
+  "game-dev-roblox": "/courses/game-dev-roblox",
+  python: "/courses/python",
+  "mobile-app-dev": "/courses/mobile-app-dev",
+  "ui-ux-design": "/courses/ui-ux-design",
+  "web-development": "/courses/web-development",
+} as const;
+
 export function CourseCard({ course }: { course: Course }) {
   return (
     <Link
-      to={`/courses/${course.slug}` as "/courses"}
+      to={courseLinks[course.slug as keyof typeof courseLinks]}
       className="group relative block rounded-2xl overflow-hidden bg-card border border-border hover:border-gold/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
     >
       <div className="relative aspect-[16/10] overflow-hidden">
