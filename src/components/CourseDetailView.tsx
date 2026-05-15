@@ -13,10 +13,10 @@ export function CourseDetailView({ course }: { course: Course }) {
         <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold/25 blur-3xl animate-float" />
         <div className="container mx-auto max-w-7xl px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-up">
-            <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-gold mb-6">
+            <Link to="/courses" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-gold mb-8">
               <ArrowLeft className="h-4 w-4" /> All courses
             </Link>
-            <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold">{course.category}</span>
+            <span className="block mt-2 text-xs uppercase tracking-[0.25em] text-gold font-semibold">{course.category}</span>
             <h1 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">{course.title}</h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl">{course.blurb}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
