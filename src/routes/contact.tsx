@@ -2,8 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { PageHero } from "@/components/PageHero";
 import { site } from "@/data/site";
-import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -17,8 +22,51 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your full name").max(100),
+  email: z.string().trim().email("Please enter a valid email").max(255),
+  age: z.string().trim().max(50).optional().or(z.literal("")),
+  course: z.string().trim().max(100).optional().or(z.literal("")),
+  message: z.string().trim().min(10, "Please write at least 10 characters").max(2000),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
+
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: "", email: "", age: "", course: "", message: "" },
+  });
+
+  const onSubmit = async (values: ContactFormValues) => {
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: values.name,
+      email: values.email,
+      age: values.age || null,
+      course: values.course || null,
+      message: values.message,
+    });
+
+    if (error) {
+      toast.error("Something went wrong", {
+        description: "Please try again or reach us on WhatsApp.",
+      });
+      return;
+    }
+
+    toast.success("Message sent!", {
+      description: "We'll get back to you within 24 hours.",
+    });
+    reset();
+    setSubmitted(true);
+  };
+
   return (
     <Layout>
       <PageHero
@@ -57,8 +105,9 @@ function ContactPage() {
         </div>
 
         <form
-          onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+          onSubmit={handleSubmit(onSubmit)}
           className="lg:col-span-3 rounded-2xl bg-card border border-border p-8 shadow-elevated"
+          noValidate
         >
           {submitted ? (
             <div className="py-16 text-center">
@@ -67,26 +116,42 @@ function ContactPage() {
               </div>
               <h3 className="mt-4 font-display text-2xl font-bold">Message sent!</h3>
               <p className="mt-2 text-muted-foreground">We'll get back to you within 24 hours.</p>
+              <button
+                type="button"
+                onClick={() => setSubmitted(false)}
+                className="mt-6 text-sm font-medium text-gold hover:underline"
+              >
+                Send another message
+              </button>
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 gap-5">
-              <Field label="Full name" name="name" />
-              <Field label="Email" name="email" type="email" />
-              <Field label="Learner age" name="age" />
-              <Field label="Course of interest" name="course" />
+              <Field label="Full name" error={errors.name?.message} {...register("name")} />
+              <Field label="Email" type="email" error={errors.email?.message} {...register("email")} />
+              <Field label="Learner age" error={errors.age?.message} {...register("age")} />
+              <Field label="Course of interest" error={errors.course?.message} {...register("course")} />
               <div className="sm:col-span-2">
                 <label className="text-sm font-medium text-foreground">Message</label>
                 <textarea
                   rows={5}
+                  {...register("message")}
                   className="mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
                   placeholder="Tell us a bit about your goals or interests..."
                 />
+                {errors.message && (
+                  <p className="mt-1.5 text-xs text-destructive">{errors.message.message}</p>
+                )}
               </div>
               <button
                 type="submit"
-                className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient text-gold-foreground px-7 py-3.5 font-semibold hover:shadow-gold-glow transition-shadow"
+                disabled={isSubmitting}
+                className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient text-gold-foreground px-7 py-3.5 font-semibold hover:shadow-gold-glow transition-shadow disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message <Send className="h-4 w-4" />
+                {isSubmitting ? (
+                  <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
+                ) : (
+                  <>Send Message <Send className="h-4 w-4" /></>
+                )}
               </button>
             </div>
           )}
@@ -96,15 +161,25 @@ function ContactPage() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
-  return (
+type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  error?: string;
+};
+
+const Field = React.forwardRef<HTMLInputElement, FieldProps>(
+  ({ label, error, type = "text", ...rest }, ref) => (
     <div>
       <label className="text-sm font-medium text-foreground">{label}</label>
       <input
-        name={name}
+        ref={ref}
         type={type}
         className="mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+        {...rest}
       />
+      {error && <p className="mt-1.5 text-xs text-destructive">{error}</p>}
     </div>
-  );
-}
+  ),
+);
+Field.displayName = "Field";
+
+import React from "react";
