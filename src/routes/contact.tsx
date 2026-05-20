@@ -182,5 +182,3 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
   ),
 );
 Field.displayName = "Field";
-
-import React from "react";
