@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { useForm as useFormspree } from "@formspree/react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -35,6 +35,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [formspreeState, submitToFormspree] = useFormspree("xeedewwd");
   const {
     register,
     handleSubmit,
@@ -46,27 +47,30 @@ function ContactPage() {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: values.name,
-      email: values.email,
-      age: values.age || null,
-      course: values.course || null,
-      message: values.message,
-    });
-
-    if (error) {
+    try {
+      await submitToFormspree(values);
+    } catch {
       toast.error("Something went wrong", {
         description: "Please try again or reach us on WhatsApp.",
       });
-      return;
     }
-
-    toast.success("Message sent!", {
-      description: "We'll get back to you within 24 hours.",
-    });
-    reset();
-    setSubmitted(true);
   };
+
+  React.useEffect(() => {
+    if (formspreeState.succeeded) {
+      toast.success("Message sent!", {
+        description: "We'll get back to you within 24 hours.",
+      });
+      reset();
+      setSubmitted(true);
+    } else if (formspreeState.errors && formspreeState.errors.getAllFieldErrors().length) {
+      toast.error("Something went wrong", {
+        description: "Please try again or reach us on WhatsApp.",
+      });
+    }
+  }, [formspreeState.succeeded, formspreeState.errors, reset]);
+
+  const submitting = isSubmitting || formspreeState.submitting;
 
   return (
     <Layout>
@@ -145,10 +149,10 @@ function ContactPage() {
               </div>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={submitting}
                 className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient text-gold-foreground px-7 py-3.5 font-semibold hover:shadow-gold-glow transition-shadow disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
+                {submitting ? (
                   <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
                 ) : (
                   <>Send Message <Send className="h-4 w-4" /></>
