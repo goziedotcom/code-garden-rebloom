@@ -63,7 +63,7 @@ function ContactPage() {
       });
       reset();
       setSubmitted(true);
-    } else if (formspreeState.errors && (formspreeState.errors as { getAllFieldErrors?: () => unknown[] }).getAllFieldErrors?.().length) {
+    } else if (formspreeState.errors && formspreeState.errors.getAllFieldErrors().length) {
       toast.error("Something went wrong", {
         description: "Please try again or reach us on WhatsApp.",
       });
