@@ -3,7 +3,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { PageHero } from "@/components/PageHero";
 import { site } from "@/data/site";
-import { Mail, Phone, MapPin, Send, MessageCircle, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
+
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.7.244-1.06 0-.488-1.466-1.376-1.838-1.633zm-2.95 7.622c-4.81 0-8.785-3.974-8.785-8.785s3.974-8.785 8.785-8.785 8.785 3.974 8.785 8.785-3.974 8.785-8.785 8.785zm0-19.66c-5.99 0-10.875 4.886-10.875 10.875 0 2.06.573 3.918 1.547 5.563l-1.96 5.788 6.013-1.92a10.71 10.71 0 0 0 5.275 1.36c5.99 0 10.875-4.886 10.875-10.876 0-5.99-4.886-10.875-10.875-10.875z" />
+    </svg>
+  );
+}
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -104,7 +112,7 @@ function ContactPage() {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 rounded-2xl bg-[#25D366] text-white p-5 font-semibold hover:bg-[#1ebe57] transition-colors shadow-elevated"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-6 w-6" />
             Chat with us on WhatsApp
           </a>
         </div>
