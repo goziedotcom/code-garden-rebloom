@@ -47,21 +47,28 @@ function ContactPage() {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
-    const result = await submitToFormspree(values);
-
-    if (result.response?.status !== 200 || (result as { errors?: unknown[] }).errors?.length) {
+    try {
+      await submitToFormspree(values);
+    } catch {
       toast.error("Something went wrong", {
         description: "Please try again or reach us on WhatsApp.",
       });
-      return;
     }
-
-    toast.success("Message sent!", {
-      description: "We'll get back to you within 24 hours.",
-    });
-    reset();
-    setSubmitted(true);
   };
+
+  React.useEffect(() => {
+    if (formspreeState.succeeded) {
+      toast.success("Message sent!", {
+        description: "We'll get back to you within 24 hours.",
+      });
+      reset();
+      setSubmitted(true);
+    } else if (formspreeState.errors && (formspreeState.errors as { getAllFieldErrors?: () => unknown[] }).getAllFieldErrors?.().length) {
+      toast.error("Something went wrong", {
+        description: "Please try again or reach us on WhatsApp.",
+      });
+    }
+  }, [formspreeState.succeeded, formspreeState.errors, reset]);
 
   const submitting = isSubmitting || formspreeState.submitting;
 
