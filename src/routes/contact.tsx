@@ -112,7 +112,7 @@ function ContactPage() {
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 rounded-2xl bg-[#25D366] text-white p-5 font-semibold hover:bg-[#1ebe57] transition-colors shadow-elevated"
           >
-            <MessageCircle className="h-5 w-5" />
+            <WhatsAppIcon className="h-6 w-6" />
             Chat with us on WhatsApp
           </a>
         </div>
