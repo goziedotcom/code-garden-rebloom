@@ -35,6 +35,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [formspreeState, submitToFormspree] = useFormspree("xeedewwd");
   const {
     register,
     handleSubmit,
@@ -46,15 +47,9 @@ function ContactPage() {
   });
 
   const onSubmit = async (values: ContactFormValues) => {
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: values.name,
-      email: values.email,
-      age: values.age || null,
-      course: values.course || null,
-      message: values.message,
-    });
+    const result = await submitToFormspree(values);
 
-    if (error) {
+    if (result.response?.status !== 200 || (result as { errors?: unknown[] }).errors?.length) {
       toast.error("Something went wrong", {
         description: "Please try again or reach us on WhatsApp.",
       });
@@ -67,6 +62,8 @@ function ContactPage() {
     reset();
     setSubmitted(true);
   };
+
+  const submitting = isSubmitting || formspreeState.submitting;
 
   return (
     <Layout>
