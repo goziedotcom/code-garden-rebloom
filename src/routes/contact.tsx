@@ -149,10 +149,10 @@ function ContactPage() {
               </div>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={submitting}
                 className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient text-gold-foreground px-7 py-3.5 font-semibold hover:shadow-gold-glow transition-shadow disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
+                {submitting ? (
                   <>Sending <Loader2 className="h-4 w-4 animate-spin" /></>
                 ) : (
                   <>Send Message <Send className="h-4 w-4" /></>
