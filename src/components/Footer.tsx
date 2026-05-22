@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Twitter, Youtube, Mail } from "lucide-react";
+import { Instagram, Twitter, Youtube, Facebook, Mail } from "lucide-react";
 import { site } from "@/data/site";
+import { FaTiktok } from "react-icons/fa6";
+
 
 export function Footer() {
   return (
@@ -13,9 +15,11 @@ export function Footer() {
           <p className="mt-4 max-w-md text-sm text-white/70">{site.description}</p>
           <div className="mt-6 flex gap-3">
             {[
-              { href: site.social.instagram, Icon: Instagram },
-              { href: site.social.twitter, Icon: Twitter },
-              { href: site.social.youtube, Icon: Youtube },
+              // { href: site.social.instagram, Icon: Instagram },
+              // { href: site.social.twitter, Icon: Twitter },
+              // { href: site.social.youtube, Icon: Youtube },
+              { href: site.social.facebook, Icon: Facebook },
+              { href: site.social.tiktok, Icon: FaTiktok },
               { href: `mailto:${site.contact.email}`, Icon: Mail },
             ].map(({ href, Icon }) => (
               <a

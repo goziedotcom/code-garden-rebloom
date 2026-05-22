@@ -27,9 +27,11 @@ export const site = {
     address: "Rivers State ICT Center, Air Force Road, Port Harcourt, Nigeria",
   },
   social: {
-    instagram: "https://instagram.com/officialcodegarden",
-    twitter: "https://twitter.com/officialcodegarden",
-    youtube: "https://youtube.com/@officialcodegarden",
+    // instagram: "https://instagram.com/officialcodegarden",
+    // twitter: "https://twitter.com/officialcodegarden",
+    // youtube: "https://youtube.com/@officialcodegarden",
+    facebook: "https://www.facebook.com/officialcodegarden",
+    tiktok: "https://www.tiktok.com/@official_codegarden",
   },
   stats: [
     { value: "500+", label: "Students Taught" },
