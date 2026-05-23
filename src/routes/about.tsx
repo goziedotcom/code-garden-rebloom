@@ -4,7 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { site } from "@/data/site";
 import { Sprout, Target, Eye, Quote } from "lucide-react";
-import ceoPhoto from "@/assets/ceo-wilfred.png";
+import ceoPhoto from "@/assets/ceo-wilfred.jpeg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
