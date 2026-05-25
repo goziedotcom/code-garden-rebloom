@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -21,6 +22,11 @@ import { Route as CoursesMobileAppDevRouteImport } from './routes/courses.mobile
 import { Route as CoursesGameDevScratchRouteImport } from './routes/courses.game-dev-scratch'
 import { Route as CoursesGameDevRobloxRouteImport } from './routes/courses.game-dev-roblox'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
   '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
   '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
   '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
   '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/courses/game-dev-roblox': typeof CoursesGameDevRobloxRoute
   '/courses/game-dev-scratch': typeof CoursesGameDevScratchRoute
   '/courses/mobile-app-dev': typeof CoursesMobileAppDevRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/courses'
+    | '/sitemap.xml'
     | '/courses/game-dev-roblox'
     | '/courses/game-dev-scratch'
     | '/courses/mobile-app-dev'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/sitemap.xml'
     | '/courses/game-dev-roblox'
     | '/courses/game-dev-scratch'
     | '/courses/mobile-app-dev'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/courses'
+    | '/sitemap.xml'
     | '/courses/game-dev-roblox'
     | '/courses/game-dev-scratch'
     | '/courses/mobile-app-dev'
@@ -162,10 +174,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses': {
       id: '/courses'
       path: '/courses'
@@ -274,6 +294,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
